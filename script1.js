@@ -1,6 +1,6 @@
-import { API_KEY } from "./config.js";
+import { API_KEYS } from "./config.js";
 const typebox = document.querySelector(".inputbox");
-let url = "https://openrouter.ai/api/v1/chat/completions";
+let url = "https://api.groq.com/openai/v1/chat/completions";
 const messages = [{ role: "system", content: "you are nutrionist chat bot you will tell about healthy and unhealthy food all about nutrients" }];
 const messageConsole = document.querySelector(".message");
 const histories = document.querySelector(".histories1");
@@ -52,7 +52,7 @@ async function sendToBot(data) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            model: "mistralai/mistral-small-3.2-24b-instruct",
+            model: "meta-llama/llma-4-scout-17b-16e-instruct",
             messages: messages
         })
     }
