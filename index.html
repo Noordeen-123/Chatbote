@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Kapakana:wght@300..400&family=Pacifico&family=Playwrite+HU:wght@100..400&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        * {
+            text-transform: capitalize;
+
+        }
+
+        body {
+            background: url("homebg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100vw 100vh;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+
+        }
+
+        .welcome {
+            position: fixed;
+            left: 0px;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            width: 500px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clip-path: ellipse(100% 50% at 0% 50%);
+            box-shadow: 100px 100px 100px black;
+
+
+        }
+
+        .text {
+            color: white;
+            text-align: justify;
+            font-size: 40px;
+            padding: 90px;
+
+        }
+
+        .boxes {
+
+            position: relative;
+            left: 400px;
+            display: grid;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+
+            grid-template-columns: repeat(2, 130px);
+            grid-template-rows: repeat(2, 130px);
+            padding: 30px;
+            gap: 10px;
+            display: none;
+
+
+        }
+
+        .qwe {
+            grid-column: span 2;
+            color: white;
+
+        }
+
+        .mode {
+
+            border: 2px solid rgb(90, 89, 89);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            color: white;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 100px 100px 100px rgb(82, 8, 8);
+            
+        }
+
+        .mode:hover {
+            transform: scale(1.2);
+
+        }
+
+        .start h1 {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            position: relative;
+            background-color: transparent;
+            backdrop-filter: blur(40px);
+            padding: 10px;
+            border-radius: 25px;
+            left: 700px;
+            color: white;
+            box-shadow: 100px 100px 100px black;
+        }
+        
+    a {
+   text-decoration: none;
+   color: inherit;
+ }
+    </style>
+</head>
+
+<body>
+    <div class="start">
+        <h1>lets get started</h1>
+    </div>
+
+    <div class="boxes">
+        <h1 class="qwe">please select one mode to begin</h1>
+        <a href="mental_health.html">
+            <div class="mode"><img src="mentalbot-removebg-preview.png" alt="" width="80">
+                mental-health
+            </div>
+        </a>
+        <a href="nutrition_diet.html">
+            <div class="mode"> <img src="bot3.png" alt="" width="90">
+                <br>nutrition
+            </div>
+        </a>
+        <a href="physical_fitness.html">
+            <div class="mode">
+                <img src="pbot.png" alt="" width="90">
+                physical-fitness
+            </div>
+        </a>
+        <a href="Diagnosis.html">
+            <div class="mode">
+                <img src="diag.png" alt="" width="90">
+                Diagnosis
+            </div>
+        </a>
+    </div>
+    <div class="welcome">
+        <div class="text">
+            welcome !!
+            <br>
+            to our Health ChatBot
+            <br>
+            <div class="special">
+                <br>
+                Your 24/7 digital Buddy 💖
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.querySelector(".start").addEventListener("click", () => {
+            document.querySelector(".boxes").style.display = "grid"
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+export const API_KEY ="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";
+export const API_KEYS ="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";

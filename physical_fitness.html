@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Chatbot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* body, */
+    /* html { */
+    /* overflow: hidden; */
+    /* } */
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .usermessage {
+      align-self: flex-end;
+
+
+      background-color: white;
+      border-radius: 15%;
+      padding: 10px;
+      box-shadow: 1px 2px 2px 1px gray;
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .botmessage {
+      align-self: flex-start;
+
+      background-color: white;
+      border-radius: 7%;
+      padding: 10px;
+      box-shadow: 1px 2px 2px 1px gray;
+      max-width: 300px;
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .message {
+      width: 50vw;
+      height: 70vh;
+      border: none;
+      display: flex;
+      flex-direction: column;
+
+
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 40px;
+      margin-right: 0;
+      margin-left: 7vw;
+    }
+
+    .messageConsole {
+      padding-top: 60px;
+      padding-left: 30px;
+      display: flex;
+
+      position: fixed;
+      top: 0px;
+      left: 25vw;
+      bottom: 0px;
+      width: 75vw;
+      height: 100vh;
+
+      background: url("mtbg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 2vw 0vh;
+    }
+
+    .menubar {
+      cursor: pointer;
+      display: grid;
+      position: relative;
+      top: 0;
+      margin-left: 0;
+      width: 27vw;
+      height: 100vh;
+      color: white;
+
+      background: url(brbg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      padding-top: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .menubar>* {
+      margin-left: 0;
+      border: 2px solid rgb(34, 248, 105);
+    }
+
+    .inputbox {
+      width: 65%;
+      height: 5%;
+      position: absolute;
+      left: 18vw;
+      bottom: 90px;
+    }
+
+    li {
+      list-style-type: none;
+      padding: 5px;
+    }
+
+    i {
+      margin: 10px;
+    }
+
+    .fa-magnifying-glass {
+      position: relative;
+      top: 0px;
+      left: -40px;
+    }
+
+    input {
+      border-radius: 50px;
+      padding: 5px 5px 5px 15px;
+      font-size: 20px;
+    }
+
+    .searchbar {
+      margin-bottom: 20px;
+      width: 80%;
+      height: 20px;
+    }
+
+    .dropdown {
+      z-index: 100;
+      position: absolute;
+      left: 30%;
+      top: 20px;
+    }
+
+    li:hover {
+      background-color: aqua;
+    }
+
+    select {
+      width: 160px;
+      height: 32px;
+      border-radius: 50px;
+      padding-left: 5px;
+      font-size: medium;
+      font-weight: 500;
+    }
+
+    img {
+      position: absolute;
+      bottom: 120px;
+      left: 18vw;
+      z-index: 100;
+      width: 63px;
+      height: 83px;
+    }
+
+    .option {
+      display: none;
+      margin-left: 30px;
+    }
+
+    .histories {
+      overflow-y: scroll;
+    }
+
+    .histories1 {
+      display: none;
+    }
+  
+    a {
+   text-decoration: none;
+   color: inherit;
+ }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="menubar">
+   
+    <div style="display: flex; border: none;"><input class="searchbar" type="text" placeholder="Search"
+        style="border:none">
+      <i class="fa-solid fa-magnifying-glass" style="border:none" onclick="searching()"></i>
+      <!-- <i class="fa-solid fa-bars"></i> -->
+    </div>
+
+    <ul class="items">
+      <li>
+        <div class="" onclick="disappear()"><i class="fa-solid fa-square-plus"></i>New Chats</div>
+      </li>
+      <li>
+        <a href="index.html">
+          <div><i class="fa-solid fa-house"></i> Home
+        </a>
+  </div>
+
+
+  </li>
+  <li>
+    <div class="options" onclick="showoption()"><i class="fa-solid fa-rocket"></i>Explore</div>
+    <ul class="option">
+      <li> <a href="mental_health.html">mental-health</a> </li>
+      <li> <a href="physical_fitness.html">physical-fitness</a> </li>
+      <li> <a href="nutrition_diet.html">nutrients and diet</a></li>
+      <li> <a href="Diagnosis.html">diagnosis</a> </li>
+    </ul>
+  </li>
+
+  <li>
+    <div onclick="displaystorage()"><i class="fa-solid fa-hourglass"></i>History
+      <div class="histories">
+        <ul class="histories1">
+        </ul>
+  </li>
+
+  <li>
+    <div><i class="fa-solid fa-right-from-bracket"></i>Log Out</div>
+  </li>
+  </ul>
+  </div>
+  <div class="messageConsole">
+    <div class="message"></div>
+    <span>
+      <input class="inputbox" id="poil" type="text" placeholder="What's on your Heart 
+Today ?"><button type="submit" for="poil" style="position: absolute;"></button>
+      <img src="mentalbot-removebg-preview.
+png" alt="Bot">
+    </span>
+  </div>
+
+  <span class="dropdown">
+    <label>
+      <select name="dropdown">
+        <option>
+          <a href="physical_fitness.html">
+            Physical Fitness 💪
+          </a>
+        </option>
+        <option>
+          <a href="mental_health.html">
+            Mental Health
+          </a>
+        </option>
+        <option>
+          <a href="nutrition_diet.html">
+            Nutrition and Diet
+          </a>
+        </option>
+        <option>
+          <a href="Diagnosis.html">
+            Diagnosis
+          </a>
+        </option>
+      </select>
+    </label>
+  </span>
+  <script type="module" src="phy.js"></script>
+
+</body>
+
+</html>
